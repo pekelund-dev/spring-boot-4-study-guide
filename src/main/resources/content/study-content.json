@@ -1,0 +1,441 @@
+{
+  "modules": [
+    {
+      "id": "modern-java",
+      "title": "The Modern Java Foundation",
+      "description": "Java 21/25 fundamentals, virtual threads, functional patterns, and build tooling essentials.",
+      "minLevel": "NEWBIE",
+      "sections": [
+        {
+          "id": "java-basics",
+          "title": "Java 21/25 Basics You Must Know",
+          "type": "TEXT",
+          "body": "Master records, sealed classes, switch expressions, pattern matching, and the new collection methods. These features reduce boilerplate and make Spring Boot configuration cleaner.",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["foundation"]
+        },
+        {
+          "id": "virtual-threads",
+          "title": "Virtual Threads in Practice",
+          "type": "CODE",
+          "body": "Spring Boot 4 enables virtual threads for lightweight concurrency. Use them for IO-heavy workloads to scale without complex thread pools.",
+          "code": "ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();\ntry (executor) {\n    executor.submit(() -> service.fetch());\n}",
+          "minLevel": "PRO",
+          "targetOs": ["ANY"],
+          "focusTags": ["performance", "foundation"]
+        },
+        {
+          "id": "functional-java",
+          "title": "Functional Java for Spring",
+          "type": "BEST_PRACTICE",
+          "body": "Prefer immutability, streams for data shaping, and Optional for absence. Keep lambdas small and side-effect free to make your Spring components testable.",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["foundation"]
+        },
+        {
+          "id": "build-tools",
+          "title": "Build Tools and the Spring Boot 4 Lifecycle",
+          "type": "COMMANDS",
+          "commands": [
+            "mvn -v",
+            "mvn -DskipTests package",
+            "mvn spring-boot:run"
+          ],
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["foundation"]
+        },
+        {
+          "id": "java-exercise",
+          "title": "Exercise: Convert to Records",
+          "type": "EXERCISE",
+          "exercisePrompt": "Refactor a mutable DTO into a Java record and update the constructor usage in a Spring service.",
+          "exerciseStarter": "public class CourseDto {\n    private String name;\n    private int minutes;\n    // getters/setters\n}\n",
+          "exerciseSolution": "public record CourseDto(String name, int minutes) { }\n",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["foundation"]
+        },
+        {
+          "id": "java-quiz",
+          "title": "Java 21 Quick Quiz",
+          "type": "QUIZ",
+          "questions": [
+            {
+              "id": "q1",
+              "prompt": "Which Java feature enforces inheritance constraints?",
+              "options": ["Records", "Sealed classes", "Text blocks", "Var"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q2",
+              "prompt": "What is the main benefit of virtual threads?",
+              "options": ["Faster CPU", "Cheaper blocking operations", "Better GC", "No memory usage"],
+              "correctIndex": 1
+            }
+          ],
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["foundation"]
+        }
+      ]
+    },
+    {
+      "id": "core-spring",
+      "title": "Core Spring & Boot 4 Essentials",
+      "description": "IoC, auto-configuration, modular starters, and Jakarta EE 11 alignment.",
+      "minLevel": "NEWBIE",
+      "sections": [
+        {
+          "id": "ioc-di",
+          "title": "IoC & Dependency Injection",
+          "type": "TEXT",
+          "body": "Spring manages object graphs through IoC containers. Use constructor injection for mandatory dependencies and explicit contracts.",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["core"]
+        },
+        {
+          "id": "auto-config",
+          "title": "Spring Boot 4 Auto-Configuration",
+          "type": "CODE",
+          "body": "Auto-configuration is modular and condition-based. Boot 4 favors explicit module boundaries and minimal reflection.",
+          "code": "@AutoConfiguration\n@ConditionalOnClass(DataSource.class)\npublic class DataModuleAutoConfig {\n    @Bean\n    DataSource dataSource() {\n        return new HikariDataSource();\n    }\n}",
+          "minLevel": "PRO",
+          "targetOs": ["ANY"],
+          "focusTags": ["core"]
+        },
+        {
+          "id": "starter-system",
+          "title": "Modularized Starter System",
+          "type": "BEST_PRACTICE",
+          "body": "Boot 4 starters are smaller and module-aware. Adopt only what you need: web, data, security, observability, AI.",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["core"]
+        },
+        {
+          "id": "jakarta-alignment",
+          "title": "Jakarta EE 11 Alignment",
+          "type": "TEXT",
+          "body": "Spring 7 fully aligns with Jakarta EE 11 namespaces and APIs. Ensure your dependencies use jakarta.* packages.",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["core"]
+        },
+        {
+          "id": "core-exercise",
+          "title": "Exercise: Build a Custom Starter",
+          "type": "EXERCISE",
+          "exercisePrompt": "Create a starter module that auto-configures a feature flag client when a property is enabled.",
+          "exerciseStarter": "@AutoConfiguration\n@ConditionalOnProperty(prefix = \"flags\", name = \"enabled\", havingValue = \"true\")\npublic class FlagAutoConfig {\n    // TODO\n}",
+          "exerciseSolution": "@Bean\npublic FlagClient flagClient(FlagProperties properties) {\n    return new FlagClient(properties.endpoint());\n}",
+          "minLevel": "PRO",
+          "targetOs": ["ANY"],
+          "focusTags": ["core"]
+        },
+        {
+          "id": "core-exam",
+          "title": "Core Spring Exam",
+          "type": "EXAM",
+          "questions": [
+            {
+              "id": "q1",
+              "prompt": "Which annotation marks a class as auto-configuration in Boot 4?",
+              "options": ["@Configuration", "@AutoConfiguration", "@EnableAutoConfiguration", "@AutoConfig"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q2",
+              "prompt": "What is the recommended injection style?",
+              "options": ["Field", "Setter", "Constructor", "Reflection"],
+              "correctIndex": 2
+            }
+          ],
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["core"]
+        }
+      ]
+    },
+    {
+      "id": "data-web",
+      "title": "Data & Web (Zero to Pro)",
+      "description": "Jakarta Data 1.1, JPA, JDBC client, validation, and web layer essentials.",
+      "minLevel": "NEWBIE",
+      "sections": [
+        {
+          "id": "jakarta-data",
+          "title": "Jakarta Data 1.1 Overview",
+          "type": "TEXT",
+          "body": "Jakarta Data 1.1 brings repository abstractions. Spring Data integrates seamlessly with new Jakarta Data repositories.",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["data"]
+        },
+        {
+          "id": "jpa-jdbc",
+          "title": "Spring Data JPA & JDBC Client",
+          "type": "CODE",
+          "body": "Use the JDBC client for high-performance SQL and JPA for domain-driven mapping. Boot 4 encourages explicit transaction boundaries.",
+          "code": "public record Customer(Long id, String name) {}\n\n@JdbcRepository\ninterface CustomerRepository {\n    Optional<Customer> findById(Long id);\n}",
+          "minLevel": "PRO",
+          "targetOs": ["ANY"],
+          "focusTags": ["data"]
+        },
+        {
+          "id": "validation",
+          "title": "Validation & Error Handling",
+          "type": "BEST_PRACTICE",
+          "body": "Use jakarta.validation annotations and problem details responses. Standardize API error contracts for clients.",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["web"]
+        },
+        {
+          "id": "web-commands",
+          "title": "Useful Web Commands",
+          "type": "COMMANDS",
+          "commands": [
+            "curl -X POST http://localhost:8080/api/courses",
+            "http GET :8080/actuator/health",
+            "mvn -DskipTests spring-boot:run"
+          ],
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["web"]
+        },
+        {
+          "id": "data-exercise",
+          "title": "Exercise: Add Validation",
+          "type": "EXERCISE",
+          "exercisePrompt": "Add @NotBlank and @Size to a request record and map validation errors to ProblemDetail.",
+          "exerciseStarter": "public record CreateCourseRequest(String title, String level) {}",
+          "exerciseSolution": "public record CreateCourseRequest(@NotBlank @Size(max = 120) String title, String level) {}",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["web"]
+        },
+        {
+          "id": "data-quiz",
+          "title": "Data & Web Quiz",
+          "type": "QUIZ",
+          "questions": [
+            {
+              "id": "q1",
+              "prompt": "What is a recommended API error format in Spring 7?",
+              "options": ["Custom string", "ProblemDetail", "XML", "Stacktrace"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q2",
+              "prompt": "Which client is optimized for direct SQL?",
+              "options": ["WebClient", "JdbcClient", "RestTemplate", "R2dbcEntityTemplate"],
+              "correctIndex": 1
+            }
+          ],
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["data"]
+        }
+      ]
+    },
+    {
+      "id": "security-resilience",
+      "title": "Security & Resilience",
+      "description": "Spring Security 7, resilience patterns, and testing strategy.",
+      "minLevel": "PRO",
+      "sections": [
+        {
+          "id": "security-7",
+          "title": "Spring Security 7 Highlights",
+          "type": "TEXT",
+          "body": "Security 7 embraces explicit configuration, modern OAuth2 defaults, and authorization managers. Favor lambda-based DSLs.",
+          "minLevel": "PRO",
+          "targetOs": ["ANY"],
+          "focusTags": ["security"]
+        },
+        {
+          "id": "resilience",
+          "title": "Built-in Resilience",
+          "type": "CODE",
+          "body": "Spring 7 adds built-in resilience annotations for retries, timeouts, and circuit breaking.",
+          "code": "@Resilient\npublic OrderStatus fetchStatus() {\n    return client.fetch();\n}",
+          "minLevel": "HERO",
+          "targetOs": ["ANY"],
+          "focusTags": ["resilience"]
+        },
+        {
+          "id": "testing",
+          "title": "Testing Strategy",
+          "type": "BEST_PRACTICE",
+          "body": "Compose tests: slice for data/web, full context for integration, and contract tests for downstreams.",
+          "minLevel": "PRO",
+          "targetOs": ["ANY"],
+          "focusTags": ["testing"]
+        },
+        {
+          "id": "security-exercise",
+          "title": "Exercise: Secure an API",
+          "type": "EXERCISE",
+          "exercisePrompt": "Secure a /admin endpoint with role-based access and return 403 for unauthorized access.",
+          "exerciseStarter": "http.authorizeHttpRequests(auth -> auth.requestMatchers(\"/admin\").hasRole(\"ADMIN\"));",
+          "exerciseSolution": "http.authorizeHttpRequests(auth -> auth.requestMatchers(\"/admin\").hasRole(\"ADMIN\").anyRequest().permitAll());",
+          "minLevel": "PRO",
+          "targetOs": ["ANY"],
+          "focusTags": ["security"]
+        },
+        {
+          "id": "security-exam",
+          "title": "Security & Resilience Exam",
+          "type": "EXAM",
+          "questions": [
+            {
+              "id": "q1",
+              "prompt": "Which DSL is preferred in Spring Security 7?",
+              "options": ["XML", "Lambda-based", "Annotations only", "Legacy Java config"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q2",
+              "prompt": "Why use slice tests?",
+              "options": ["To avoid mocks", "To test one layer in isolation", "To test UI", "To avoid CI"],
+              "correctIndex": 1
+            }
+          ],
+          "minLevel": "PRO",
+          "targetOs": ["ANY"],
+          "focusTags": ["security"]
+        }
+      ]
+    },
+    {
+      "id": "hero-specializations",
+      "title": "Hero Specializations (Cloud & AI)",
+      "description": "Spring AI, GraalVM native images, observability, Docker, and Kubernetes.",
+      "minLevel": "HERO",
+      "sections": [
+        {
+          "id": "spring-ai",
+          "title": "Spring AI",
+          "type": "TEXT",
+          "body": "Spring AI provides model clients, prompt templates, and vector store integrations. Use it to generate study summaries or build copilots.",
+          "minLevel": "HERO",
+          "targetOs": ["ANY"],
+          "focusTags": ["ai"]
+        },
+        {
+          "id": "graalvm",
+          "title": "GraalVM & Native Images",
+          "type": "CODE",
+          "body": "Native images shrink cold start times. Configure reflection hints and AOT-friendly code paths.",
+          "code": "mvn -Pnative native:compile\n./target/spring-scholar",
+          "minLevel": "HERO",
+          "targetOs": ["LINUX", "MAC"],
+          "focusTags": ["cloud"]
+        },
+        {
+          "id": "observability",
+          "title": "Observability",
+          "type": "BEST_PRACTICE",
+          "body": "Use OpenTelemetry exporters, structured logs, and unified traces across Boot 4 modules.",
+          "minLevel": "HERO",
+          "targetOs": ["ANY"],
+          "focusTags": ["observability"]
+        },
+        {
+          "id": "container-commands",
+          "title": "Docker & Kubernetes Commands",
+          "type": "COMMANDS",
+          "commands": [
+            "docker build -t spring-scholar:latest .",
+            "docker run -p 8080:8080 spring-scholar:latest",
+            "kubectl apply -f k8s/deployment.yaml"
+          ],
+          "minLevel": "HERO",
+          "targetOs": ["ANY"],
+          "focusTags": ["cloud"]
+        },
+        {
+          "id": "hero-diagram",
+          "title": "Cloud-Native Architecture",
+          "type": "DIAGRAM",
+          "diagram": "graph TD\n  UI[Web Client] --> API[Spring Boot 4 API]\n  API --> OTEL[OpenTelemetry]\n  API --> DB[(PostgreSQL 18)]\n  API --> CACHE[(Redis)]\n  API --> AI[Spring AI Model]",
+          "minLevel": "HERO",
+          "targetOs": ["ANY"],
+          "focusTags": ["cloud"]
+        },
+        {
+          "id": "hero-exam",
+          "title": "Hero Exam",
+          "type": "EXAM",
+          "questions": [
+            {
+              "id": "q1",
+              "prompt": "What does AOT primarily improve?",
+              "options": ["Runtime reflection", "Startup time", "Heap size", "JIT hints"],
+              "correctIndex": 1
+            },
+            {
+              "id": "q2",
+              "prompt": "Which component emits traces?",
+              "options": ["OpenTelemetry", "Spring Data", "JPA", "Thymeleaf"],
+              "correctIndex": 0
+            }
+          ],
+          "minLevel": "HERO",
+          "targetOs": ["ANY"],
+          "focusTags": ["cloud", "observability"]
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "title": "Other Essentials",
+      "description": "Additional topics: documentation, migration tips, and community resources.",
+      "minLevel": "NEWBIE",
+      "sections": [
+        {
+          "id": "docs",
+          "title": "Documentation & Migration",
+          "type": "TEXT",
+          "body": "Prioritize official Boot 4 and Spring 7 references. When migrating, upgrade Java first, then Boot, then dependencies.",
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["foundation"]
+        },
+        {
+          "id": "cli-setup",
+          "title": "Environment Setup",
+          "type": "COMMANDS",
+          "commands": [
+            "choco install temurin25",
+            "brew install openjdk@25",
+            "sdk install java 25-tem"
+          ],
+          "minLevel": "NEWBIE",
+          "targetOs": ["WINDOWS", "MAC", "LINUX"],
+          "focusTags": ["foundation"]
+        },
+        {
+          "id": "other-quiz",
+          "title": "Quick Check",
+          "type": "QUIZ",
+          "questions": [
+            {
+              "id": "q1",
+              "prompt": "Which order is recommended for upgrades?",
+              "options": ["Boot -> Java -> Dependencies", "Java -> Boot -> Dependencies", "Dependencies -> Boot -> Java", "No order"],
+              "correctIndex": 1
+            }
+          ],
+          "minLevel": "NEWBIE",
+          "targetOs": ["ANY"],
+          "focusTags": ["foundation"]
+        }
+      ]
+    }
+  ]
+}
