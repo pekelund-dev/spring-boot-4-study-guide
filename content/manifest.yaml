@@ -1,0 +1,99 @@
+version: 1
+modules:
+  - id: modern-java-foundation
+    title: The Modern Java Foundation
+    sections:
+      - title: Java 21/25 Basics
+        items:
+          - content/modules/modern-java-foundation/java-basics.md
+          - content/modules/modern-java-foundation/virtual-threads.md
+          - content/modules/modern-java-foundation/java-foundation-best-practices.md
+          - content/modules/modern-java-foundation/java-commands.md
+          - content/exercises/java-foundation-exercise.md
+      - title: Functional Java
+        items:
+          - content/modules/modern-java-foundation/functional-java.md
+      - title: Build Tools
+        items:
+          - content/modules/modern-java-foundation/build-tools.md
+  - id: core-spring-essentials
+    title: Core Spring & Boot 4 Essentials
+    sections:
+      - title: IoC & Dependency Injection
+        items:
+          - content/modules/core-spring-essentials/ioc-di.md
+          - content/modules/core-spring-essentials/ioc-di-diagram.md
+          - content/exercises/core-spring-di-exercise.md
+      - title: Spring Boot 4 Auto-Configuration
+        items:
+          - content/modules/core-spring-essentials/auto-configuration.md
+          - content/exercises/boot-auto-config-exercise.md
+      - title: Modularized Starter System
+        items:
+          - content/modules/core-spring-essentials/modular-starters.md
+      - title: Jakarta EE 11 Alignment
+        items:
+          - content/modules/core-spring-essentials/jakarta-ee-11.md
+  - id: data-and-web
+    title: Data & Web (Zero to Pro)
+    sections:
+      - title: Spring Data JPA & JDBC Client
+        items:
+          - content/modules/data-and-web/spring-data-jpa.md
+          - content/exercises/data-web-repository-exercise.md
+      - title: Validation & Error Handling
+        items:
+          - content/modules/data-and-web/validation-error-handling.md
+          - content/modules/data-and-web/request-lifecycle-diagram.md
+  - id: security-and-resilience
+    title: Security & Resilience
+    sections:
+      - title: Spring Security 7
+        items:
+          - content/modules/security-and-resilience/spring-security-7.md
+          - content/modules/security-and-resilience/security-filter-chain-diagram.md
+      - title: Built-in Resilience
+        items:
+          - content/modules/security-and-resilience/resilience.md
+      - title: Testing
+        items:
+          - content/modules/security-and-resilience/testing.md
+  - id: hero-specializations
+    title: Hero Specializations (Cloud & AI)
+    sections:
+      - title: Spring AI
+        items:
+          - content/modules/hero-specializations/spring-ai.md
+      - title: GraalVM & Native Images
+        items:
+          - content/modules/hero-specializations/graalvm-native.md
+      - title: Observability
+        items:
+          - content/modules/hero-specializations/observability.md
+          - content/modules/hero-specializations/observability-commands.md
+      - title: Docker & Kubernetes
+        items:
+          - content/modules/hero-specializations/docker-kubernetes.md
+          - content/exercises/hero-deployment-exercise.md
+  - id: other
+    title: Other Topics
+    sections:
+      - title: Ecosystem Overview
+        items:
+          - content/modules/other/ecosystem-overview.md
+          - content/modules/other/additional-topics.md
+assessments:
+  quizzes:
+    - content/quizzes/java-foundation-quiz.md
+    - content/quizzes/core-spring-quiz.md
+    - content/quizzes/data-web-quiz.md
+    - content/quizzes/security-resilience-quiz.md
+    - content/quizzes/hero-specializations-quiz.md
+  exams:
+    - content/exams/core-spring-exam.md
+  exercises:
+    - content/exercises/boot-auto-config-exercise.md
+    - content/exercises/java-foundation-exercise.md
+    - content/exercises/core-spring-di-exercise.md
+    - content/exercises/data-web-repository-exercise.md
+    - content/exercises/hero-deployment-exercise.md
