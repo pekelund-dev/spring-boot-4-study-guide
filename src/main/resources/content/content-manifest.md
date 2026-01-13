@@ -7,6 +7,8 @@ This manifest follows the 5-phase structure and aligns topics to the Spring proj
 ### Lessons
 - **PH1-L1 — Java 21/25 Basics**
   - Difficulty Variants: [Newbie, Pro, Hero]
+  - Content File: [PH1-L1-Java-21-25-Basics.md](./PH1-L1-Java-21-25-Basics.md)
+  - Includes: Theory, Diagrams, Examples, Best Practices, Exercises, Quiz, Exam
 - **PH1-L2 — Virtual Threads**
   - Difficulty Variants: [Newbie, Pro, Hero]
 - **PH1-L3 — Functional Java**
