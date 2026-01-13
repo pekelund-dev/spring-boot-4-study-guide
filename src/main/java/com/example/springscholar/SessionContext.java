@@ -1,11 +1,12 @@
 package com.example.springscholar;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 @Component
-@Scope(WebApplicationContext.SCOPE_SESSION)
+@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SessionContext {
     private LearningLevel level = LearningLevel.NEWBIE;
     private TargetOs targetOs = TargetOs.ANY;
